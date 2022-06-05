@@ -2,6 +2,8 @@ local composer = require( "composer" )
  
 local scene = composer.newScene()
 
+display.setStatusBar( display.HiddenStatusBar )
+
 local w = display.contentWidth
 local h = display.contentHeight
 local physics = require("physics")
@@ -31,26 +33,29 @@ function scene:create( event )
     mc.isFixedRotation = 0
     local sensor = 0
 
-    local plataforma = display.newRect(w,h,280,20);
-    plataforma.x, plataforma.y = 140, h * .4
-    physics.addBody(plataforma, "static", {bounce=0, friction = 0.3});
-    plataforma.objType = "ground"
+    local plataformas = {}
+    --PLATAFORMA 1
+    plataformas[1] = display.newRect(w,h,280,20);
+    plataformas[1].x, plataformas[1].y = 140, h * .4
+    physics.addBody(plataformas[1], "static", {bounce=0, friction = 0.3});
+    plataformas[1].objType = "ground"
     --plataforma.isVisible = false
 
-    local plataforma2 = display.newRect(w,h,200,20);
-    plataforma2.x, plataforma2.y = 340, h * .8
-    physics.addBody(plataforma2, "static", {bounce=0, friction = 0.3});
-    plataforma2.objType = "ground"
+    --PLATAFORMA 2
+    plataformas[2] = display.newRect(w,h,200,20);
+    plataformas[2].x, plataformas[2].y = 340, h * .8
+    physics.addBody(plataformas[2], "static", {bounce=0, friction = 0.3});
+    plataformas[2].objType = "ground"
 
     local pontos = {}
-    pontos[1] = display.newCircle(w * .1,plataforma.y - 30, 10);
+    pontos[1] = display.newCircle(w * .1, plataformas[1].y - 30, 10);
     physics.addBody(pontos[1], "static", {bounce=0, friction = 0});
     pontos[1].objType = "score"
-    pontos[2] = display.newCircle(w * .8,plataforma2.y - 30, 10);
+    pontos[2] = display.newCircle(w * .8, plataformas[2].y - 30, 10);
     physics.addBody(pontos[2], "static", {bounce=0, friction = 0});
     pontos[2].objType = "score"
 
-
+    --BOTÕES PARA MOVIMENTAÇÃO
     local botoes = {}
     botoes[1] = display.newImageRect("image/teste/arrow.png", 40, 40);
     botoes[1].x, botoes[1].y = w * .2, h * .8
@@ -59,11 +64,6 @@ function scene:create( event )
     botoes[2].x, botoes[2].y = w * .1, h * .8
     botoes[2].rotation = 180
     botoes[2].name = "left"
-
-    --local detectorPulo = display.newRect(w,h,1,1);
-    --physics.addBody(detectorPulo,"dynamic", {bounce = 0});
-    --detectorPulo:setFillColor(1,0,0)
-    --detectorPulo.name = "detector"
 
     local passoX = 0
 
