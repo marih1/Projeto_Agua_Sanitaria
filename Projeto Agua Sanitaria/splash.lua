@@ -15,7 +15,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
     
-    local start = display.newRect(sceneGroup,w,h,150,60);
+    local start = display.newRect(sceneGroup,w,h,300,120);
     start.x, start.y = w / 2, h / 2
 
     local options = {
@@ -23,7 +23,7 @@ function scene:create( event )
         x = start.x,
         y = start.y,
         font = native.systemFont,
-        fontSize = 20,
+        fontSize = 40,
         align = "center"
     }
 

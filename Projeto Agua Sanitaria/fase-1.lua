@@ -3,11 +3,11 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 
 display.setStatusBar( display.HiddenStatusBar )
+system.activate( "multitouch" )
 
-local w = display.contentWidth
-local h = display.contentHeight
 local physics = require("physics")
 physics.start()
+physics.setGravity(0, 20);
 
 
 function scene:create( event )
@@ -15,53 +15,55 @@ function scene:create( event )
     local w = display.contentWidth
     local h = display.contentHeight
 
-    local botaoPular = display.newRect(w,h,240,320);
+    local botaoPular = display.newRect(w,h,640,720);
     botaoPular.x, botaoPular.y = w * .75, h / 2
     botaoPular:setFillColor(0)
+    botaoPular.name = "botaoPular"
     --botaoPular.alpha = 0
     --botaoPular.isVisible = false
 
-    local background = display.newRect(w,h,480,320);
+    local background = display.newImageRect("image/background.png", w, h);
     background.x, background.y = w / 2, h / 2
-    background:setFillColor(50/255,70/255, 120/255)
     background.name = "background"
 
-    local mc = display.newRect(w,h,50,50);
-    mc.x, mc.y = w * .2, h * .2
-    mc:setFillColor(1,0,0)
+    local mc = display.newRect(w,h,120,120);
+    mc.x, mc.y = w * .5, h * .8
+    mc:setFillColor(1,1,0)
     physics.addBody(mc, "dynamic", {bounce=0, friction = 0.1});
     mc.isFixedRotation = 0
     local sensor = 0
 
     local plataformas = {}
     --PLATAFORMA 1
-    plataformas[1] = display.newRect(w,h,280,20);
-    plataformas[1].x, plataformas[1].y = 140, h * .4
+    plataformas[1] = display.newRect(w,h,1280,60);
+    plataformas[1].x, plataformas[1].y = w / 2, h * .85
     physics.addBody(plataformas[1], "static", {bounce=0, friction = 0.3});
     plataformas[1].objType = "ground"
-    --plataforma.isVisible = false
+    plataformas[1]:setFillColor(0)
+    plataformas[1].isVisible = false
 
     --PLATAFORMA 2
-    plataformas[2] = display.newRect(w,h,200,20);
-    plataformas[2].x, plataformas[2].y = 340, h * .8
-    physics.addBody(plataformas[2], "static", {bounce=0, friction = 0.3});
-    plataformas[2].objType = "ground"
+    --[plataformas[2] = display.newRect(w,h,200,20);
+    --plataformas[2].x, plataformas[2].y = 425, h * .8
+    --physics.addBody(plataformas[2], "static", {bounce=0, friction = 0.3});
+    --plataformas[2].objType = "ground"
+    --plataformas[2]:setFillColor(0)
 
     local pontos = {}
-    pontos[1] = display.newCircle(w * .1, plataformas[1].y - 30, 10);
+    pontos[1] = display.newCircle(w * .1, plataformas[1].y - 100, 20);
     physics.addBody(pontos[1], "static", {bounce=0, friction = 0});
     pontos[1].objType = "score"
-    pontos[2] = display.newCircle(w * .8, plataformas[2].y - 30, 10);
+    pontos[2] = display.newCircle(w * .8, plataformas[1].y - 100, 20);
     physics.addBody(pontos[2], "static", {bounce=0, friction = 0});
     pontos[2].objType = "score"
 
     --BOTÕES PARA MOVIMENTAÇÃO
     local botoes = {}
-    botoes[1] = display.newImageRect("image/teste/arrow.png", 40, 40);
-    botoes[1].x, botoes[1].y = w * .2, h * .8
+    botoes[1] = display.newImageRect("image/arrow.png", 140, 140);
+    botoes[1].x, botoes[1].y = w * .2, h * .88
     botoes[1].name = "right"
-    botoes[2] = display.newImageRect("image/teste/arrow.png", 40, 40);
-    botoes[2].x, botoes[2].y = w * .1, h * .8
+    botoes[2] = display.newImageRect("image/arrow.png", 140, 140);
+    botoes[2].x, botoes[2].y = w * .07, h * .88
     botoes[2].rotation = 180
     botoes[2].name = "left"
 
@@ -73,11 +75,11 @@ function scene:create( event )
             --code
             if e.target.name == "right" then
                 --code
-                passoX = 2
+                passoX = 4
                 --pessoa:setSequence("andandoDireita")
             elseif e.target.name == "left" then
                 --code
-                passoX = -2
+                passoX = -4
                 --pessoa:setSequence("andandoEsquerda")
             end
         elseif e.phase == "ended" or e.phase == "cancelled" then
@@ -91,25 +93,21 @@ function scene:create( event )
         end
     end
 
-    local function update()
-        --code update
-        mc.x = mc.x + passoX
-        --detectorPulo.x, detectorPulo.y = mc.x, mc.y * 1.12
-
-        if mc.y > 320 then
-            mc.y = 0
-        elseif mc.x > 480 then
-            mc.x = 0
-        elseif mc.x < 0 then
-            mc.x = 480
-        end
-    end
-
 
     local function jump(e)
         --code jump
-        if sensor == 0 then
-            mc:setLinearVelocity(0, -100)
+        if e.phase == "began" or e.phase == "moved" then
+            --code
+            if e.target.name == "botaoPular" and sensor == 0 then
+                --code
+                mc:setLinearVelocity(0, -250)
+                --pessoa:setSequence("andandoDireita")
+            end
+        elseif e.phase == "ended" or e.phase == "cancelled" then
+            --code
+            if e.target.name == "botaoPular" then
+                --code
+            end
         end
     end
 
@@ -133,10 +131,23 @@ function scene:create( event )
         end
     end
 
+    local function update()
+        --code update
+        mc.x = mc.x + passoX
+        --detectorPulo.x, detectorPulo.y = mc.x, mc.y * 1.12
+
+        if mc.y > 720 then
+            mc.y = 0
+        elseif mc.x > 1280 then
+            mc.x = 0
+        elseif mc.x < 0 then
+            mc.x = w
+        end
+    end
 
     mc.collision = mcColisao
     mc:addEventListener("collision")
-    botaoPular:addEventListener("tap", jump)
+    botaoPular:addEventListener("touch", jump)
     Runtime:addEventListener("enterFrame", update)
     for i=1, #botoes do
         botoes[i]:addEventListener("touch", movimetacao)
