@@ -30,7 +30,7 @@ function scene:create( event )
 
     local mc = display.newRect(sceneGroup,w,h,120,120);
     mc.x, mc.y = w * .5, h * .8
-    mc:setFillColor(1,1,0)
+    mc:setFillColor(1,0,1)
     physics.addBody(mc, "dynamic", {bounce=0, friction = 0.1});
     mc.isFixedRotation = 0
     local sensor = 0
@@ -170,13 +170,9 @@ function scene:create( event )
         if score == #pontos then
             --code
             congratulations.text = "Você ganhou, parabéns!"
-            mc.x, mc.y = 0,0
-            --testar se vai rodar a comemoracao 2x antes de passar pra proxima linha
-            --timer.performWithDelay(1,comemoracao,2);
-            composer.gotoScene("fase-2")
-            Runtime:removeEventListener("enterFrame", update)
+            --composer.gotoScene("fase-2")
         end
-        print("fase1")
+        print("fase2");
     end
 
     mc.collision = mcColisao
@@ -212,11 +208,10 @@ function scene:hide( event )
  
     if ( phase == "will" ) then
         -- Code here runs when the scene is on screen (but is about to go off screen)
-        
-        print("will phase")
+ 
     elseif ( phase == "did" ) then
         -- Code here runs immediately after the scene goes entirely off screen
-        
+ 
     end
 end
  

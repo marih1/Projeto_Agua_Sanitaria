@@ -21,6 +21,7 @@ settings =
 		usesPermissions =
 		{
 			"android.permission.INTERNET",
+
 		},
 	},
 
@@ -51,7 +52,9 @@ settings =
 	excludeFiles =
 	{
 		-- Exclude unnecessary files for each platform
-		all = { "Icon.png", "Icon-*dpi.png", "Images.xcassets", },
+		all = { "icon.jpg", "Icon-*dpi.png", "Images.xcassets", },
 		android = { "LaunchScreen.storyboardc", },
 	},
+
+
 }
