@@ -181,8 +181,23 @@ function scene:show( event )
     --end
 
     local function onCollision(self, event)
-        -- if (event.phase == "began") then
+        -- if e.phase == "began" then
+        --     code
         --     print(self.name .. " colidiu com " .. event.other.name)
+        --     if e.other.objType == "ground" then
+        --         sensorChao = true
+        --     end
+        
+        --     if e.other.objTypeq == "score" then
+        --         --code
+        --         score = score + 1
+        --         e.other:removeSelf()
+        --     end
+        -- elseif e.phase == "ended" then
+        --     --code
+        --     if e.other.objType == "ground" then
+        --         sensorChao = false
+        --     end
         -- end
     end
 
