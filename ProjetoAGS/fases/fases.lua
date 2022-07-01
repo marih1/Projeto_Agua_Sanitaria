@@ -91,11 +91,12 @@ function scene:show( event )
 
     
     
-    --Mecânica do jogo
-    local mc = display.newRect(sceneGroup,w,h,40,40);
-    mc.x, mc.y = w * .5, h * .8
-    mc:setFillColor(1,1,0)
-    --physics.addBody(mc, "dynamic", {bounce=0, friction = 0.1});
+    --MECÂNICAS DO JOGO
+    local mc = display.newRect(sceneGroup,w,h,60,60);
+    mc.x, mc.y = w /2, h /2
+    mc:setFillColor(1,0,0)
+    physics.addBody(mc, "dynamic", {bounce=0, friction = 0.1});
+    
     mc.isFixedRotation = 0
 
     --BOTÕES PARA MOVIMENTAÇÃO
@@ -114,7 +115,8 @@ function scene:show( event )
     botaoPular.name = "botaoPular"
 
     local passoX = 0
-    local sensor = false
+    local score = 0
+    local sensorChao = true --necessário obj.type na plataforma no tiled
 
     --MOVIMENTAÇÃO E INTERATIVIDADE COM O PERSONAGEM
     local function movimetacao(e)
@@ -123,19 +125,19 @@ function scene:show( event )
             if e.target.name == "right" then
                 --code
                 passoX = 4
-                --pessoa:setSequence("andandoDireita")
+                --mc:setSequence("andandoDireita")
             elseif e.target.name == "left" then
                 --code
                 passoX = -4
-                --pessoa:setSequence("andandoEsquerda")
+                --mc:setSequence("andandoEsquerda")
             end
         elseif e.phase == "ended" or e.phase == "cancelled" then
             --code
             passoX = 0
             if e.target.name == "right" then
-                --pessoa:setSequence("paradoDireita")
+                --mc:setSequence("paradoDireita")
             elseif e.target.name == "left" then
-                --pessoa:setSequence("paradoEsquerda")
+                --mc:setSequence("paradoEsquerda")
             end
         end
     end
@@ -144,11 +146,10 @@ function scene:show( event )
         --code jump
         if e.phase == "began" or e.phase == "moved" then
             --code
-            if e.target.name == "botaoPular" and sensor == true then
+            if e.target.name == "botaoPular" and sensorChao == true then
                 --code
-                local vx, vy = mc:getLinearVelocity()
-                mc:setLinearVelocity( 0, -180 )
-                --pessoa:setSequence("andandoDireita")
+                mc:applyLinearVelocity( 0, -180 )
+                --mc:setSequence("andandoDireita")
             end
         elseif e.phase == "ended" or e.phase == "cancelled" then
             --code
@@ -158,10 +159,55 @@ function scene:show( event )
         end
     end
 
+    --local function mcColisao(self, e)
+    --    if e.phase == "began" then
+    --        --code
+    --        if e.other.objType == "ground" then
+    --            sensorChao = true
+    --        end
+    --
+    --        if e.other.objTypeq == "score" then
+    --            --code
+    --            score = score + 1
+    --            e.other:removeSelf()
+    --        end
+    --
+    --    elseif e.phase == "ended" then
+    --        --code
+    --        if e.other.objType == "ground" then
+    --            sensorChao = false
+    --        end
+    --    end
+    --end
+
+    local function onCollision(self, event)
+        -- if (event.phase == "began") then
+        --     print(self.name .. " colidiu com " .. event.other.name)
+        -- end
+    end
+
+    local function onPreCollision(self, event)
+        -- if (event.other.tipoColisao == false) then
+        --     event.contact.isEnabled = false
+        -- end
+    end
+
     local function update()
         --code update
         mc.x = mc.x + passoX
+
+        -- if (mc.y <= plataforma.y - 25) then
+        --     plataforma.tipoColisao = true
+        -- else
+        --     plataforma.tipoColisao = false
+        -- end
     end
+
+    mc.preCollision = onPreCollision
+    mc:addEventListener("preCollision")
+
+    mc.collision = onCollision
+    mc:addEventListener("collision")
 
     botaoPular:addEventListener("touch", jump)
     Runtime:addEventListener("enterFrame", update)
