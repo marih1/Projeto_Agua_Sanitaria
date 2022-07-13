@@ -79,7 +79,7 @@ function plotaLabels(n, sceneGroup)
     local ftexts = {}
     for i=1, n do
         flabels[i] = display.newRoundedRect(sceneGroup, 0, 0, 80, 80, 5)
-        flabels[i].x, flabels[i].y = w * .1 + (x * 45), h * .1 + (y * 45)
+        flabels[i].x, flabels[i].y = w * .1 + (x * 100), h * .1 + (y * 100)
         flabels[i]:setFillColor(114/255, 9/255, 183/255)
         
         ftexts[i] = display.newText(options)

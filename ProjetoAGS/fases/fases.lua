@@ -61,16 +61,8 @@ end
  
 -- create()
 function scene:create( event )
- 
-    local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
      
-end
- 
- 
--- show()
-function scene:show( event )
-    
     local sceneGroup = self.view
     local phase = event.phase
 
@@ -89,35 +81,50 @@ function scene:show( event )
     local map = tiled.new(mapData, "objects")
     map.x,map.y = display.contentCenterX - map.designedWidth/2, display.contentCenterY - map.designedHeight/2
 
+    sceneGroup:insert(map)
+    voltarParaMenu(sceneGroup)
     
-    
-    --MECÂNICAS DO JOGO
-    local mc = display.newRect(sceneGroup,w,h,60,60);
+    --IMPORTS DO MAP
+    plataforma = map:findObject("plataforma")
+    suporte = map:findObject("suporte")
+    suporteType = map:listTypes("suporte")
+    florType = map:listTypes("flor")
+
+    for i=1, #florType do
+        florType[i].tipoColisao = false
+        print(florType[i].tipoColisao)
+    end
+
+    -- print(#apoio .. " oi")
+    --print(suporte.y)
+
+    --BOTÕES E OBJETOS
+    local mc = display.newRect(sceneGroup,w,h,30,30);
     mc.x, mc.y = w /2, h /2
     mc:setFillColor(1,0,0)
     physics.addBody(mc, "dynamic", {bounce=0, friction = 0.1});
-    
-    mc.isFixedRotation = 0
+    mc.isFixedRotation = true
 
-    --BOTÕES PARA MOVIMENTAÇÃO
+
     local botoes = {}
-    botoes[1] = display.newImageRect(sceneGroup, "images/arrow.png", 40, 40);
-    botoes[1].x, botoes[1].y = w * .2, h * .88
+    botoes[1] = display.newImageRect(sceneGroup, "images/arrow.png", 80, 80);
+    botoes[1].x, botoes[1].y = w * .3, h * .88
     botoes[1].name = "right"
-    botoes[2] = display.newImageRect(sceneGroup, "images/arrow.png", 40, 40);
-    botoes[2].x, botoes[2].y = w * .07, h * .88
+    botoes[2] = display.newImageRect(sceneGroup, "images/arrow.png", 80, 80);
+    botoes[2].x, botoes[2].y = w * .21, h * .88
     botoes[2].rotation = 180
     botoes[2].name = "left"
 
-    local botaoPular = display.newImageRect(sceneGroup, "images/arrow.png", 40,40);
+    local botaoPular = display.newImageRect(sceneGroup, "images/arrow.png", 80,80);
     botaoPular.x, botaoPular.y = w * .8, h * .88
     botaoPular.rotation = 270
     botaoPular.name = "botaoPular"
 
     local passoX = 0
     local score = 0
-    local sensorChao = true --necessário obj.type na plataforma no tiled
+    local sensorChao = false --necessário obj.type na plataforma no tiled
 
+    --MECÂNICAS DO JOGO
     --MOVIMENTAÇÃO E INTERATIVIDADE COM O PERSONAGEM
     local function movimetacao(e)
         if e.phase == "began" or e.phase == "moved" then
@@ -146,76 +153,57 @@ function scene:show( event )
         --code jump
         if e.phase == "began" or e.phase == "moved" then
             --code
-            if e.target.name == "botaoPular" and sensorChao == true then
+            if e.target.name == "botaoPular"  and sensorChao == true then
                 --code
-                mc:applyLinearVelocity( 0, -180 )
+                mc:setLinearVelocity( 0, -200 )
                 --mc:setSequence("andandoDireita")
             end
         elseif e.phase == "ended" or e.phase == "cancelled" then
             --code
-            if e.target.name == "botaoPular" then
+        end
+    end
+
+    local function onCollision(self, e)
+        if e.phase == "began" then
+            --code
+            if e.other.name == "flor" then
                 --code
+                e.other:removeSelf()
+                score = score + 1
+            end
+            
+            if e.other.name == "plataforma" or e.other.name == "suporte" then
+                sensorChao = true
+            end
+        -- print(self.name .. " colidiu com " .. e.other.name)
+        elseif e.phase == "ended" then
+        --     --code
+            if e.other.name == "plataforma" or e.other.name == "suporte" then
+                sensorChao = false
             end
         end
     end
 
-    --local function mcColisao(self, e)
-    --    if e.phase == "began" then
-    --        --code
-    --        if e.other.objType == "ground" then
-    --            sensorChao = true
-    --        end
-    --
-    --        if e.other.objTypeq == "score" then
-    --            --code
-    --            score = score + 1
-    --            e.other:removeSelf()
-    --        end
-    --
-    --    elseif e.phase == "ended" then
-    --        --code
-    --        if e.other.objType == "ground" then
-    --            sensorChao = false
-    --        end
-    --    end
-    --end
-
-    local function onCollision(self, event)
-        -- if e.phase == "began" then
-        --     code
-        --     print(self.name .. " colidiu com " .. event.other.name)
-        --     if e.other.objType == "ground" then
-        --         sensorChao = true
-        --     end
-        
-        --     if e.other.objTypeq == "score" then
-        --         --code
-        --         score = score + 1
-        --         e.other:removeSelf()
-        --     end
-        -- elseif e.phase == "ended" then
-        --     --code
-        --     if e.other.objType == "ground" then
-        --         sensorChao = false
-        --     end
-        -- end
-    end
-
-    local function onPreCollision(self, event)
-        -- if (event.other.tipoColisao == false) then
-        --     event.contact.isEnabled = false
-        -- end
+    local function onPreCollision(self, e)
+        if (e.other.tipoColisao == false) then
+            e.contact.isEnabled = false
+        end
     end
 
     local function update()
         --code update
         mc.x = mc.x + passoX
+        
+        for i=1, #suporteType do
+            if (mc.y <= suporteType[i].y - 25) then
+                suporteType[i].tipoColisao = true
+            else
+                suporteType[i].tipoColisao = false
+            end
+        end
 
-        -- if (mc.y <= plataforma.y - 25) then
-        --     plataforma.tipoColisao = true
-        -- else
-        --     plataforma.tipoColisao = false
-        -- end
+        
+        --print(suporteType[3].tipoColisao)
     end
 
     mc.preCollision = onPreCollision
@@ -226,13 +214,17 @@ function scene:show( event )
 
     botaoPular:addEventListener("touch", jump)
     Runtime:addEventListener("enterFrame", update)
+
     for i=1, #botoes do
         botoes[i]:addEventListener("touch", movimetacao)
     end
-
-
-    sceneGroup:insert(map)
-    voltarParaMenu(sceneGroup)
+end
+ 
+ 
+-- show()
+function scene:show( event )
+    local sceneGroup = self.view
+    local phase = event.phase
  
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)

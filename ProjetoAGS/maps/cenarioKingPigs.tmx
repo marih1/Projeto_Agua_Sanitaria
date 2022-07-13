@@ -1,7 +1,287 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
- <tileset firstgid="1" source="objects/cenarioKing.tsx"/>
- <tileset firstgid="248" source="objects/cenarioKingDecorations.tsx"/>
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="87">
+ <editorsettings>
+  <export target="fase01.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../objects/cenarioKing.tsx"/>
+ <tileset firstgid="248" source="../objects/cenarioKingDecorations.tsx"/>
+ <objectgroup id="2" name="Camada de Objetos 1">
+  <object id="33" name="suporte" type="suporte" gid="258" x="832" y="512" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="34" name="suporte" type="suporte" gid="258" x="864" y="512" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="35" name="suporte" type="suporte" gid="258" x="896" y="512" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="36" name="suporte" type="suporte" gid="258" x="928" y="512" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="37" name="plataforma" type="plataforma" gid="41" x="0" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="38" name="plataforma" type="plataforma" gid="41" x="32" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="39" name="plataforma" type="plataforma" gid="41" x="96" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="40" name="plataforma" type="plataforma" gid="41" x="64" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="41" name="plataforma" type="plataforma" gid="41" x="160" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="42" name="plataforma" type="plataforma" gid="41" x="128" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="43" name="plataforma" type="plataforma" gid="41" x="224" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="44" name="plataforma" type="plataforma" gid="41" x="192" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="45" name="plataforma" type="plataforma" gid="41" x="288" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="46" name="plataforma" type="plataforma" gid="41" x="256" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="47" name="plataforma" type="plataforma" gid="41" x="352" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="48" name="plataforma" type="plataforma" gid="41" x="320" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="49" name="plataforma" type="plataforma" gid="41" x="448" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="50" name="plataforma" type="plataforma" gid="41" x="416" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="51" name="plataforma" type="plataforma" gid="41" x="416" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="52" name="plataforma" type="plataforma" gid="41" x="384" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="53" name="plataforma" type="plataforma" gid="41" x="480" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="54" name="plataforma" type="plataforma" gid="41" x="512" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="55" name="plataforma" type="plataforma" gid="41" x="544" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="56" name="plataforma" type="plataforma" gid="41" x="576" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="57" name="plataforma" type="plataforma" gid="41" x="608" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="58" name="plataforma" type="plataforma" gid="41" x="608" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="59" name="plataforma" type="plataforma" gid="41" x="640" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="60" name="plataforma" type="plataforma" gid="41" x="672" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="61" name="plataforma" type="plataforma" gid="41" x="704" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="62" name="plataforma" type="plataforma" gid="41" x="736" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="63" name="plataforma" type="plataforma" gid="41" x="768" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="64" name="plataforma" type="plataforma" gid="41" x="832" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="65" name="plataforma" type="plataforma" gid="41" x="800" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="66" name="plataforma" type="plataforma" gid="41" x="864" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="67" name="plataforma" type="plataforma" gid="41" x="928" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="68" name="plataforma" type="plataforma" gid="41" x="896" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="69" name="plataforma" type="plataforma" gid="41" x="960" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="70" name="plataforma" type="plataforma" gid="41" x="1024" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="71" name="plataforma" type="plataforma" gid="41" x="992" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="72" name="plataforma" type="plataforma" gid="41" x="1056" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="73" name="plataforma" type="plataforma" gid="41" x="1088" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="74" name="plataforma" type="plataforma" gid="41" x="1152" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="75" name="plataforma" type="plataforma" gid="41" x="1120" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="76" name="plataforma" type="plataforma" gid="41" x="1184" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="77" name="plataforma" type="plataforma" gid="41" x="1216" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="78" name="plataforma" type="plataforma" gid="41" x="1248" y="576" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="79" name="apoio" type="apoio" gid="101" x="736" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="80" name="apoio" type="apoio" gid="101" x="768" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="81" name="apoio" type="apoio" gid="101" x="800" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="82" name="apoio" type="apoio" gid="101" x="832" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="83" name="apoio" type="apoio" gid="101" x="864" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="84" gid="101" x="544" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="85" gid="101" x="512" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="86" gid="101" x="480" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer id="1" name="Camada de Tiles 1" width="40" height="18">
   <data encoding="csv">
 101,101,101,41,41,41,27,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,28,41,41,41,101,101,101,
@@ -22,6 +302,28 @@
 41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
 41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
 101,101,101,41,41,41,46,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,47,41,41,41,101,101,101
+</data>
+ </layer>
+ <layer id="3" name="Camada de Tiles 2" width="40" height="18">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,273,274,273,274,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,281,280,281,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,257,258,258,259,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,101,101,101,101,101,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
 </map>
