@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="87">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="131">
  <editorsettings>
   <export target="fase01.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" source="../objects/cenarioKing.tsx"/>
  <tileset firstgid="248" source="../objects/cenarioKingDecorations.tsx"/>
+ <tileset firstgid="290" source="../objects/flower.tsx"/>
+ <tileset firstgid="291" source="../objects/spikes.tsx"/>
  <objectgroup id="2" name="Camada de Objetos 1">
-  <object id="33" name="suporte" type="suporte" gid="258" x="832" y="512" width="32" height="32">
-   <properties>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
-  <object id="34" name="suporte" type="suporte" gid="258" x="864" y="512" width="32" height="32">
-   <properties>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
-  <object id="35" name="suporte" type="suporte" gid="258" x="896" y="512" width="32" height="32">
-   <properties>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
   <object id="36" name="suporte" type="suporte" gid="258" x="928" y="512" width="32" height="32">
    <properties>
     <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
    </properties>
   </object>
   <object id="37" name="plataforma" type="plataforma" gid="41" x="0" y="576" width="32" height="32">
@@ -236,75 +224,97 @@
     <property name="bodyType" value="static"/>
    </properties>
   </object>
-  <object id="79" name="apoio" type="apoio" gid="101" x="736" y="544" width="32" height="32">
+  <object id="88" name="suporte" type="suporte" gid="258" x="704" y="384" width="32" height="32">
    <properties>
     <property name="bodyType" value="static"/>
-    <property name="tipoColisao" type="int" value="0"/>
+    <property name="tipoColisao" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="80" name="apoio" type="apoio" gid="101" x="768" y="544" width="32" height="32">
+  <object id="93" name="suporte" type="suporte" gid="258" x="480" y="544" width="32" height="32">
    <properties>
     <property name="bodyType" value="static"/>
-    <property name="tipoColisao" type="int" value="0"/>
+    <property name="tipoColisao" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="81" name="apoio" type="apoio" gid="101" x="800" y="544" width="32" height="32">
+  <object id="94" name="suporte" type="suporte" gid="258" x="512" y="544" width="32" height="32">
    <properties>
     <property name="bodyType" value="static"/>
-    <property name="tipoColisao" type="int" value="0"/>
+    <property name="tipoColisao" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="82" name="apoio" type="apoio" gid="101" x="832" y="544" width="32" height="32">
+  <object id="95" name="suporte" type="suporte" gid="258" x="544" y="544" width="32" height="32">
    <properties>
     <property name="bodyType" value="static"/>
-    <property name="tipoColisao" type="int" value="0"/>
+    <property name="tipoColisao" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="83" name="apoio" type="apoio" gid="101" x="864" y="544" width="32" height="32">
+  <object id="96" name="suporte" type="suporte" gid="258" x="576" y="544" width="32" height="32">
    <properties>
     <property name="bodyType" value="static"/>
-    <property name="tipoColisao" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="84" gid="101" x="544" y="544" width="32" height="32">
-   <properties>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
-  <object id="85" gid="101" x="512" y="544" width="32" height="32">
-   <properties>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
-  <object id="86" gid="101" x="480" y="544" width="32" height="32">
-   <properties>
-    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="1" name="Camada de Tiles 1" width="40" height="18">
+ <objectgroup id="13" name="Espinhos">
+  <object id="126" name="espinho" type="espinhos" gid="291" x="416" y="544" width="32" height="32">
+   <properties>
+    <property name="ativado" type="bool" value="true"/>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="127" name="espinho" type="espinhos" gid="291" x="448" y="544" width="32" height="32">
+   <properties>
+    <property name="ativado" type="bool" value="true"/>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="128" name="espinho" type="espinhos" gid="291" x="480" y="544" width="32" height="32">
+   <properties>
+    <property name="ativado" type="bool" value="true"/>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="129" name="espinho" type="espinhos" gid="291" x="512" y="544" width="32" height="32">
+   <properties>
+    <property name="ativado" type="bool" value="true"/>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="130" name="espinho" type="espinhos" gid="291" x="544" y="544" width="32" height="32">
+   <properties>
+    <property name="ativado" type="bool" value="true"/>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="1" name="Cenario" width="40" height="18">
   <data encoding="csv">
 101,101,101,41,41,41,27,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,28,41,41,41,101,101,101,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
-41,41,41,41,41,41,42,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,155,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
+41,41,41,41,41,41,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,41,41,41,41,41,41,
 101,101,101,41,41,41,46,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,47,41,41,41,101,101,101
 </data>
  </layer>
- <layer id="3" name="Camada de Tiles 2" width="40" height="18">
+ <layer id="7" name="Decoracoes" width="40" height="18">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -317,13 +327,52 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,258,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,273,274,273,274,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,281,280,281,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,257,258,258,259,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,101,101,101,101,101,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,258,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,258,258,258,258,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="10" name="Pontos">
+  <object id="108" name="flor" type="flor" gid="290" x="512" y="512" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="109" name="flor" type="flor" gid="290" x="352" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="110" name="flor" type="flor" gid="290" x="832" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="111" name="flor" type="flor" gid="290" x="928" y="480" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="112" name="flor" type="flor" gid="290" x="704" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="113" name="flor" type="flor" gid="290" x="672" y="544" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="tipoColisao" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <imagelayer id="12" name="Camada de Imagens 1"/>
 </map>

@@ -74,6 +74,9 @@ function scene:create( event )
     display.setDefault("magTextureFilter", "nearest")
     display.setDefault("minTextureFilter", "nearest")
     
+    local background = display.newRect(sceneGroup,w / 2, h / 2 , 2000, 576);
+    background:setFillColor(0, 0, .2)
+
     --local mapData = json.decodeFile(system.pathForFile("maps/fase03.json", system.ResourceDirectory))  -- load from json export -- Não é mais utilizado.
     local faseAtual = "maps/fase"..event.params.nfase..".json" --Carrega a fase atual com base no botão clicado na tela de escolhas.
     print(faseAtual)
@@ -87,83 +90,159 @@ function scene:create( event )
     --IMPORTS DO MAP
     plataforma = map:findObject("plataforma")
     suporte = map:findObject("suporte")
+    
     suporteType = map:listTypes("suporte")
     florType = map:listTypes("flor")
+    -- espinhosType = map:listTypes("espinhos")
 
     for i=1, #florType do
         florType[i].tipoColisao = false
-        print(florType[i].tipoColisao)
     end
 
-    -- print(#apoio .. " oi")
-    --print(suporte.y)
+    -- for i=1, #espinhosType do
+    --     espinhosType[i].tipoColisao = true
+    --     espinhosType[i].ativado = true
+    --     print(espinhosType[i].tipo)
+    -- end
 
     --BOTÕES E OBJETOS
+    -- local sheetData = {
+    --     width = 68,
+    --     height = 72,
+    --     numFrames = 16
+    -- }
+
+    -- local personagem = graphics.newImageSheet( "objects/ash.png", sheetData )
+
+    -- local sequences = {
+    --     {name = "paradoEsquerda", start = 5, count = 1, time = 300, loopCount = 1, loopDirection = 'forward'},
+    --     {name = "paradoDireita", start = 9, count = 1, time = 300, loopCount = 1, loopDirection = 'forward'},
+    --     {name = "andandoEsquerda", start = 6, count = 3, time = 300, loopCount = 0, loopDirection = 'forward'},
+    --     {name = "andandoDireita", start = 10, count = 3, time = 300, loopCount = 0, loopDirection = 'forward'}
+    -- }
+
+    -- local mc = display.newSprite(sceneGroup, personagem, sequences);
+    -- mc.x, mc.y = w /2, h /2
+    -- --mc:setFillColor(1,0,0)
+    -- physics.addBody(
+    --     mc, "dynamic", {bounce=0, friction = 0.1},
+    --     { box={ halfWidth=34, halfHeight=38, x=0, y=34 }, isSensor=true }
+    -- );
+    -- mc.isFixedRotation = true
+    -- mc.sensorOverlaps = 0
+
     local mc = display.newRect(sceneGroup,w,h,30,30);
     mc.x, mc.y = w /2, h /2
     mc:setFillColor(1,0,0)
-    physics.addBody(mc, "dynamic", {bounce=0, friction = 0.1});
+    physics.addBody(
+        mc, "dynamic", {bounce=0, friction = 0.1},
+        { box={ halfWidth=16, halfHeight=16, x=0, y=16 }, isSensor=true }
+    );
     mc.isFixedRotation = true
+    mc.sensorOverlaps = 0
 
+    --Sprite Espinhos
+    -- local sheet = {
+    --     sheetContentWidth = 96,
+    --     sheetContentHeight = 96,
+    --     width = 32,
+    --     height = 32,
+    --     numFrames = 8
+    -- }
+
+    -- local spikeSheet = graphics.newImageSheet( "objects/spikes.png", sheet )
+
+    -- local sequencesSpike = {
+    --     {name = "spikeOn", frames = { 8,7,6,5,4,3,2,1 }, time = 300, loopCount = 1, loopDirection = 'forward'},
+    --     {name = "spikeOff", start = 1, count = 8, time = 300, loopCount = 1, loopDirection = 'forward'}
+    -- }
+
+    -- for i = 1, #espinhosType do
+    -- espinhosType[i] = display.newSprite(sceneGroup, spikeSheet, sequencesSpike);
+    -- end
 
     local botoes = {}
-    botoes[1] = display.newImageRect(sceneGroup, "images/arrow.png", 80, 80);
+    for i=1, 2 do
+        botoes[i] = display.newImageRect(sceneGroup, "images/arrow.png", 80, 80);
+    end
+    --Botão 1
     botoes[1].x, botoes[1].y = w * .3, h * .88
     botoes[1].name = "right"
-    botoes[2] = display.newImageRect(sceneGroup, "images/arrow.png", 80, 80);
+    --Botão 2
     botoes[2].x, botoes[2].y = w * .21, h * .88
-    botoes[2].rotation = 180
     botoes[2].name = "left"
+    botoes[2].rotation = 180
 
     local botaoPular = display.newImageRect(sceneGroup, "images/arrow.png", 80,80);
     botaoPular.x, botaoPular.y = w * .8, h * .88
     botaoPular.rotation = 270
     botaoPular.name = "botaoPular"
 
-    local passoX = 0
-    local score = 0
-    local sensorChao = false --necessário obj.type na plataforma no tiled
 
     --MECÂNICAS DO JOGO
     --MOVIMENTAÇÃO E INTERATIVIDADE COM O PERSONAGEM
+    local passoX = 0
+    local score = 0
+    
     local function movimetacao(e)
-        if e.phase == "began" or e.phase == "moved" then
+        if e.phase == "began" then
             --code
             if e.target.name == "right" then
                 --code
                 passoX = 4
-                --mc:setSequence("andandoDireita")
+                -- mc:setSequence("andandoDireita")
             elseif e.target.name == "left" then
                 --code
                 passoX = -4
-                --mc:setSequence("andandoEsquerda")
+                -- mc:setSequence("andandoEsquerda")
             end
         elseif e.phase == "ended" or e.phase == "cancelled" then
             --code
             passoX = 0
             if e.target.name == "right" then
-                --mc:setSequence("paradoDireita")
+                -- mc:setSequence("paradoDireita")
             elseif e.target.name == "left" then
-                --mc:setSequence("paradoEsquerda")
+                -- mc:setSequence("paradoEsquerda")
             end
         end
     end
 
     local function jump(e)
         --code jump
-        if e.phase == "began" or e.phase == "moved" then
+        if e.phase == "began" and mc.sensorOverlaps > 0  then
             --code
-            if e.target.name == "botaoPular"  and sensorChao == true then
-                --code
-                mc:setLinearVelocity( 0, -200 )
-                --mc:setSequence("andandoDireita")
-            end
-        elseif e.phase == "ended" or e.phase == "cancelled" then
-            --code
+            local vx, vy = mc:getLinearVelocity()
+            mc:setLinearVelocity( vx, 0 )
+            mc:applyLinearImpulse( nil, -.2, mc.x, mc.y )
+
+            -- for i=1, #espinhosType do
+
+            --     if espinhosType[i].ativado == false then
+            --         espinhosType[i]:setSequence("spikeOn")
+            --         espinhosType[i]:play()
+            --         espinhosType[i].ativado = true
+            --         espinhosType[i].tipoColisao = true
+            --     else
+            --         espinhosType[i]:setSequence("spikeOff")
+            --         espinhosType[i]:play()
+            --         espinhosType[i].ativado = false
+            --         espinhosType[i].tipoColisao = false
+            --     end
+            -- end
         end
     end
 
     local function onCollision(self, e)
+        if ( e.selfElement == 2 and (e.other.name == "plataforma" or e.other.name == "suporte") ) then
+            -- Foot sensor has entered (overlapped) a ground object
+            if ( e.phase == "began" ) then
+                self.sensorOverlaps = self.sensorOverlaps + 1
+            -- Foot sensor has exited a ground object
+            elseif ( e.phase == "ended" ) then
+                self.sensorOverlaps = self.sensorOverlaps - 1
+            end
+        end
+
         if e.phase == "began" then
             --code
             if e.other.name == "flor" then
@@ -171,16 +250,13 @@ function scene:create( event )
                 e.other:removeSelf()
                 score = score + 1
             end
-            
-            if e.other.name == "plataforma" or e.other.name == "suporte" then
-                sensorChao = true
+    
+            if e.other.name == "espinho" then
+                print("abobora")
             end
-        -- print(self.name .. " colidiu com " .. e.other.name)
+
         elseif e.phase == "ended" then
-        --     --code
-            if e.other.name == "plataforma" or e.other.name == "suporte" then
-                sensorChao = false
-            end
+            --code
         end
     end
 
@@ -193,6 +269,7 @@ function scene:create( event )
     local function update()
         --code update
         mc.x = mc.x + passoX
+        -- mc:play()
         
         for i=1, #suporteType do
             if (mc.y <= suporteType[i].y - 25) then
@@ -202,8 +279,11 @@ function scene:create( event )
             end
         end
 
-        
-        --print(suporteType[3].tipoColisao)
+        if score == #florType then
+            --code
+            --mc:setSequence("comemoracao")
+            -- event.params.nfase = event.params.nfase + 1
+        end
     end
 
     mc.preCollision = onPreCollision
